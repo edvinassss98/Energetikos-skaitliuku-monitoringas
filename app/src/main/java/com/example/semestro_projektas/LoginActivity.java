@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class LoginActivity extends Activity {
-
+//jbh
     private EditText Name;
     private EditText Password;
     private TextView Info;

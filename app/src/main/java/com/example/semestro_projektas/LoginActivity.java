@@ -14,7 +14,7 @@ public class LoginActivity extends Activity {
     private EditText Password;
     private TextView Info;
     private Button Login;
-
+//login screen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);

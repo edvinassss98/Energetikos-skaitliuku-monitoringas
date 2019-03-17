@@ -48,8 +48,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ReportsFragment()).commit();
                 break;
             case R.id.nav_Atsijungti:
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
+                turnOff();
                 break;
 
         }
@@ -66,6 +65,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }else {
             super.onBackPressed();
         }
+    }
+    public void turnOff(){
+        LogOffActivity logOffDialog = new LogOffActivity();
+        logOffDialog.show(getSupportFragmentManager(),"logofdialog");
     }
 
 }

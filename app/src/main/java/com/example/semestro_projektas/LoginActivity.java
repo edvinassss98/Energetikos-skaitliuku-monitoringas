@@ -9,17 +9,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class LoginActivity extends Activity {
-//jbh
+
     private EditText Name;
     private EditText Password;
     private TextView Info;
     private Button Login;
-//login screen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-
+//jkb
         Name = (EditText)findViewById(R.id.etName);
         Password = (EditText)findViewById(R.id.etPass);
         Login = (Button)findViewById(R.id.btnLogin) ;

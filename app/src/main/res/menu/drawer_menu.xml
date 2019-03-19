@@ -13,7 +13,8 @@
 
                 <item android:id="@+id/Electricity"
                     android:title="Elektra"/>
-
+                <item android:id="@+id/Pressure"
+                    android:title="Slėgis"/>
                 <item android:id="@+id/Gas"
                     android:title="Dujos"/>
 
@@ -22,12 +23,30 @@
         </item>
         <item
             android:id="@+id/nav_Ataskaitos"
-            android:icon="@drawable/ic_example"
+            android:icon="@drawable/ic_reports"
             android:title="Ataskaitos" />
+        <item
+            android:id="@+id/nav_Schema"
+            android:icon="@drawable/ic_scheme"
+            android:title="Schema" />
+        <item
+            android:id="@+id/nav_Infomacija"
+            android:icon="@drawable/ic_info"
+            android:title="Informacija" />
+        <item
+            android:id="@+id/nav_Ispejimai"
+            android:icon="@drawable/ic_warning"
+            android:title="Ispejimai" />
+        <item
+            android:id="@+id/nav_Valdymas"
+            android:icon="@drawable/ic_admin"
+            android:title="Valdymo meniu" />
+
     </group>
 
     <item
         android:id="@+id/nav_Atsijungti"
-        android:icon="@drawable/ic_example"
+        android:icon="@drawable/ic_logoff"
         android:title="Atsijungti" />
+
 </menu>

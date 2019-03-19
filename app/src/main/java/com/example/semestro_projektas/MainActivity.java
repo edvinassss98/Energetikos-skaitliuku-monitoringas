@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
@@ -20,6 +21,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private EditText Password;
     private TextView Info;
     private Button Login;
+    private long backPressedTime;
+    private Toast backToast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,16 +62,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        if(drawer.isDrawerOpen(GravityCompat.START))
-        {
-            drawer.closeDrawer(GravityCompat.START);
-        }else {
-            super.onBackPressed();
+        if (backPressedTime + 1000 > System.currentTimeMillis()) {
+            backToast.cancel();
+            System.exit(1);
+            return;
+        } else {
+            backToast = Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT);
+            backToast.show();
+
         }
+        backPressedTime = System.currentTimeMillis();
+/*
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }*/
     }
+
     public void turnOff(){
         LogOffActivity logOffDialog = new LogOffActivity();
         logOffDialog.show(getSupportFragmentManager(),"logofdialog");
     }
+
 
 }

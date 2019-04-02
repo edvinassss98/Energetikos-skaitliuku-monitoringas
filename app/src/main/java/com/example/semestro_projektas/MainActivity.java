@@ -10,17 +10,12 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
-    private EditText Name;
-    private EditText Password;
-    private TextView Info;
-    private Button Login;
     private long backPressedTime;
     private Toast backToast;
 
@@ -54,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 turnOff();
                 break;
 
+
+
         }
 
         drawer.closeDrawer(GravityCompat.START);
@@ -79,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
         }*/
     }
+
 
     public void turnOff(){
         LogOffActivity logOffDialog = new LogOffActivity();

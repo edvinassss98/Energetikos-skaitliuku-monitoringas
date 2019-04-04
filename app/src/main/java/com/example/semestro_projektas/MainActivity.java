@@ -1,5 +1,6 @@
 package com.example.semestro_projektas;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        if (backPressedTime + 1000 > System.currentTimeMillis()) {
+        if (backPressedTime + 1000 > System.currentTimeMillis() ) {
             backToast.cancel();
             System.exit(1);
             return;

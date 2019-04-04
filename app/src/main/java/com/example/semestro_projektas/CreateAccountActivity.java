@@ -22,6 +22,9 @@ public class CreateAccountActivity extends Activity {
     private EditText Password;
     private EditText Type;
     private Button Create;
+    private long backPressedTime;
+    private Toast backToast;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,4 +106,16 @@ public class CreateAccountActivity extends Activity {
             return z;
         }
     }
+    @Override
+    public void onBackPressed() {
+            finish();
+        }
+
+/*
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }*/
+
 }

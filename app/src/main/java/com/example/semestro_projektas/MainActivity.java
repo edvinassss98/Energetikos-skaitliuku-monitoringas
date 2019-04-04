@@ -48,6 +48,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_Atsijungti:
                 turnOff();
                 break;
+            case R.id.nav_Valdymas:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ManagementActivity()).commit();
+                break;
+
 
 
 

@@ -1,29 +1,28 @@
 package com.example.semestro_projektas;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.widget.Spinner;
 import android.widget.Toast;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class CreateAccountActivity extends Activity {
+public class CreateAccountActivity extends Activity implements AdapterView.OnItemSelectedListener {
 
     ConnectionClass connectionClass;
     private EditText Name;
     private EditText Password;
-    private EditText Type;
+    private String Type="";
     private Button Create;
-    private long backPressedTime;
-    private Toast backToast;
+    private Spinner spinner1;
+    private static final String[] paths = {"Pasirinkti","Cecho vadovas", "Administratorius", "Inžinierius"};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,8 +31,15 @@ public class CreateAccountActivity extends Activity {
         connectionClass = new ConnectionClass();
         Name = (EditText)findViewById(R.id.edusername);
         Password = (EditText)findViewById(R.id.atpass);
-        Type = (EditText)findViewById(R.id.ettipas) ;
+
         Create = (Button) findViewById(R.id.btnCreate) ;
+        spinner1 = (Spinner)findViewById(R.id.spinner1);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(CreateAccountActivity.this,
+                android.R.layout.simple_spinner_item,paths);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        spinner1.setAdapter(adapter);
+        spinner1.setOnItemSelectedListener(this);
 
         Create.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,13 +52,36 @@ public class CreateAccountActivity extends Activity {
 
 
     }
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
+
+        switch (position) {
+            case 0:
+                Type="";
+                break;
+            case 1:
+                Type = "1";
+                break;
+            case 2:
+                Type = "2";
+                break;
+            case 3:
+                Type = "3";
+                break;
+
+        }
+    }
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+        // TODO Auto-generated method stub
+    }
     public class DoCreate extends AsyncTask<String,String,String>
     {
         String z = "";
         Boolean isSuccess = false;
         String userid = Name.getText().toString();
         String password = Password.getText().toString();
-        String type = Type.getText().toString();
+        String type = String.valueOf(Type);
         @Override
         protected void onPreExecute() {
 
@@ -67,6 +96,7 @@ public class CreateAccountActivity extends Activity {
             }
 
         }
+
 
         @Override
         protected String doInBackground(String... params) {

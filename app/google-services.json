@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "758336286696",
+    "firebase_url": "https://esm-project-ea20d.firebaseio.com",
+    "project_id": "esm-project-ea20d",
+    "storage_bucket": "esm-project-ea20d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:758336286696:android:2a1a33f697ea59ce",
+        "android_client_info": {
+          "package_name": "com.example.semestro_projektas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "758336286696-jd9o7upget64oes6rhgq7iiiu1kq5cej.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.semestro_projektas",
+            "certificate_hash": "91efff3be8f3276d867621bbca5cef2c2c3340d6"
+          }
+        },
+        {
+          "client_id": "758336286696-tu7vvapvot5vufj353d1i0bp7iptlsbi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgXQust4DqZlC_fQEZ2YTfWAiglFOJlao"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "758336286696-tu7vvapvot5vufj353d1i0bp7iptlsbi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

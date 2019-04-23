@@ -9,12 +9,11 @@ import java.sql.SQLException;
 
 
 public class ConnectionClass {
-    String ip = "192.168.0.68";//192.168.0.94//158.129.22.149(Veiks su vienu iš šitų dviejų)//alio
+    String ip = "";
     String classs = "net.sourceforge.jtds.jdbc.Driver";
-    String db = "prisijungimai";
-    String un = "pirmas";
-    String password = "123123";
-
+    String db = "";
+    String un = "";
+    String password = "";
 
     @SuppressLint("NewApi")
     public Connection CONN() {
@@ -32,10 +31,13 @@ public class ConnectionClass {
             conn = DriverManager.getConnection(ConnURL);
         } catch (SQLException se) {
             Log.e("ERRO", se.getMessage());
+            System.out.println("pirmas");
         } catch (ClassNotFoundException e) {
             Log.e("ERRO", e.getMessage());
+            System.out.println("pirma2s");
         } catch (Exception e) {
             Log.e("ERRO", e.getMessage());
+            System.out.println("pirm3as");
         }
         return conn;
     }

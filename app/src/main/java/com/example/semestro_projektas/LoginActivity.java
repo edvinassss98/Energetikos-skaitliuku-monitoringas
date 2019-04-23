@@ -1,9 +1,12 @@
 package com.example.semestro_projektas;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,106 +14,111 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 public class LoginActivity extends Activity {
 
-    ConnectionClass connectionClass;
+    private long backPressedTime;
+    private Toast backToast;
     private EditText Name;
     private EditText Password;
     private TextView Info;
     private Button Login;
     private ProgressBar pbbar;
+    private FirebaseAuth mAuth;
+
+    private ProgressDialog progressDialog;
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-//jkb
-        connectionClass = new ConnectionClass();
+
         Name = (EditText)findViewById(R.id.etName);
+        progressDialog = new ProgressDialog(this);
         Password = (EditText)findViewById(R.id.etPass);
         Login = (Button)findViewById(R.id.btnLogin) ;
+        mAuth = FirebaseAuth.getInstance();
         Info = (TextView)findViewById(R.id.twCheck) ;
         pbbar = (ProgressBar) findViewById(R.id.pbbar);
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DoLogin doLogin = new DoLogin();
-                doLogin.execute("");
+                doLogin();
             }
         });
-    }
-    public class DoLogin extends AsyncTask<String,String,String>
-    {
-        String z = "";
-        Boolean isSuccess = false;
-        String userid = Name.getText().toString();
-        String password = Password.getText().toString();
-        @Override
-        protected void onPreExecute() {
-            pbbar.setVisibility(View.VISIBLE);
-        }
-
-        @Override
-        protected void onPostExecute(String r) {
-            pbbar.setVisibility(View.GONE);
-            Toast.makeText(LoginActivity.this,r,Toast.LENGTH_SHORT).show();
-            if(isSuccess) {
-                Toast.makeText(LoginActivity.this,r,Toast.LENGTH_SHORT).show();
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                if (firebaseAuth.getCurrentUser() != null) {
+                    Toast.makeText(LoginActivity.this, "Prisijungė vartotojas - " + firebaseAuth.getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                    //mAuth.signOut();
+                }
             }
+        };
 
-        }
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseApp.initializeApp(this);
+        mAuth.addAuthStateListener(mAuthListener);
+    }
 
-        @Override
-        protected String doInBackground(String... params) {
-            if(userid.trim().equals("")|| password.trim().equals(""))
-                z = "Please enter User Id and Password";
-            else
-            {
-                try {
-                    Connection con = connectionClass.CONN();
-                    if (null == con) {
-                        z = "Error in connection with SQL server";
-                    } else {
-                        String query = "select * from dbo.logins where username='" + userid + "' and passwords='" + password + "'";
-                        Statement stmt = con.createStatement();
-                        ResultSet rs = stmt.executeQuery(query);
+    private void doLogin() {
+        String email = Name.getText().toString().trim();
+        String password = Password.getText().toString().trim();
 
-                        if(rs.next())
-                        {
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(intent);
-                        }
-                        else
-                        {
-                            z = "Invalid Credentials";
-                            isSuccess = false;
-                        }
-
+        if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
+        progressDialog.setMessage("Prisijungiama, prašome palaukti");
+        progressDialog.show();
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        progressDialog.dismiss();
+                        if (task.isSuccessful()) {
+                            Toast.makeText(LoginActivity.this, "Prisijungimas sėkmingas", Toast.LENGTH_SHORT).show();
+                        } else
+                            Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
-                }
-                catch (Exception ex)
-                {
-                    isSuccess = false;
-                    z = ex.toString();
-                }
-            }
-            return z;
-        }
+                });
+    }else
+            Toast.makeText(LoginActivity.this, "Įveskite visus laukus", Toast.LENGTH_SHORT).show();
+
+
     }
 
-/*
-    private void validate(String userName, String userPassword){
-        if((userName.equals("Admin"))&& (userPassword.equals("1234"))){
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
-        }else{
-            Info.setText("Neteisingi prisijungimo duomenys");
+
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime + 1000 > System.currentTimeMillis() ) {
+            backToast.cancel();
+            System.exit(0);
+            return;
+        } else {
+            backToast = Toast.makeText(getBaseContext(), "Paspauskite dar kartą jog išeiti", Toast.LENGTH_SHORT);
+            backToast.show();
 
         }
-        }
-*/
+        backPressedTime = System.currentTimeMillis();
+/*
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }*/
+    }
 
 }

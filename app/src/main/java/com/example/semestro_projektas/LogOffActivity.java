@@ -29,7 +29,9 @@ public class LogOffActivity extends AppCompatDialogFragment {
                 FirebaseAuth.getInstance().signOut();
 
                 Intent i = new Intent(getContext(), LoginActivity.class); //if under this dialog you do not have your MainActivity
-                getContext().startActivity(i);
+                i.addFlags(i.FLAG_ACTIVITY_CLEAR_TOP);
+                i.addFlags(i.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
 
             }
 

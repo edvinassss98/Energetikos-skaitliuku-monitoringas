@@ -1,12 +1,17 @@
 package com.example.semestro_projektas;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDialog;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -28,7 +33,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class CreateAccountActivity extends Activity implements AdapterView.OnItemSelectedListener {
+public class CreateAccountActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
 
     private EditText Name;
@@ -60,14 +65,14 @@ public class CreateAccountActivity extends Activity implements AdapterView.OnIte
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
-
-
         Create.setOnClickListener(new View.OnClickListener() {
            @Override
             public void onClick(View v) {
                 startRegister();
             }
         });
+        getSupportActionBar().setTitle("Vartotojo kūrimas");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
 
@@ -78,6 +83,8 @@ public class CreateAccountActivity extends Activity implements AdapterView.OnIte
         FirebaseApp.initializeApp(this);
 
     }
+
+
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {

@@ -105,6 +105,7 @@ public class LoginActivity extends Activity {
     public void onBackPressed() {
         if (backPressedTime + 1000 > System.currentTimeMillis() ) {
             backToast.cancel();
+
             System.exit(0);
             return;
         } else {
@@ -113,12 +114,7 @@ public class LoginActivity extends Activity {
 
         }
         backPressedTime = System.currentTimeMillis();
-/*
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }*/
-    }
 
+
+    }
 }

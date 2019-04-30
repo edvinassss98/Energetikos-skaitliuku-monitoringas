@@ -105,8 +105,8 @@ public class LoginActivity extends Activity {
     public void onBackPressed() {
         if (backPressedTime + 1000 > System.currentTimeMillis() ) {
             backToast.cancel();
-
-            System.exit(0);
+            android.os.Process.killProcess(android.os.Process.myPid());
+            System.exit(1);
             return;
         } else {
             backToast = Toast.makeText(getBaseContext(), "Paspauskite dar kartą jog išeiti", Toast.LENGTH_SHORT);

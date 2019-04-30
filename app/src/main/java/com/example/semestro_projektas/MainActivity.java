@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DatabaseReference myRef;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    private List <String> wworkshopInformations = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,11 +59,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new InformationActivity()).commit();
+            navigationView.setCheckedItem(R.id.nav_Infomacija);
+        }
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                showdata(dataSnapshot);
+
             }
 
             @Override
@@ -75,15 +79,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    private void showdata(DataSnapshot dataSnapshot) {
-        List<String> keys = new ArrayList<>();
-        for(DataSnapshot keyNode : dataSnapshot.getChildren()){
-            keys.add(keyNode.getKey());
-            wworkshopInformations.add(keyNode.getValue().toString());
-            //wworkshopInformations.get(0));
 
-        }
-    }
 
 
     //Here is if menu fragment is pushed, moves to that fragment
@@ -106,9 +102,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             default:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new InformationActivity()).commit();
                 break;
-
-
-
 
 
         }

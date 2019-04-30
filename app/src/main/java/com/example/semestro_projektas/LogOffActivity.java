@@ -32,7 +32,6 @@ public class LogOffActivity extends AppCompatDialogFragment {
                 i.addFlags(i.FLAG_ACTIVITY_CLEAR_TOP);
                 i.addFlags(i.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
-
             }
 
 

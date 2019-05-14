@@ -6,21 +6,106 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout01"
+        android:layout_width="345dp"
+        android:layout_height="614dp"
+        android:layout_marginTop="60dp"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        tools:layout_editor_absoluteX="31dp">
+
+        <TextView
+            android:id="@+id/darte2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginBottom="570dp"
+            android:layout_toRightOf="@id/mytextview1"
+            android:gravity="left"
+            android:text="Darbuotojas - " />
+
+        <TextView
+            android:id="@+id/mytextview1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="12dp" />
+
+        <TextView
+            android:id="@+id/pareig"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginBottom="445dp"
+            android:layout_toRightOf="@id/mytextview1"
+            android:gravity="left"
+            android:text="Pareigos - " />
+
+        <TextView
+            android:id="@+id/dirbn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginBottom="383dp"
+            android:layout_toRightOf="@id/mytextview1"
+            android:gravity="left"
+            android:text="Dirba nuo - " />
+
+        <TextView
+            android:id="@+id/textid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginBottom="509dp"
+            android:layout_toRightOf="@id/mytextview1"
+            android:gravity="left"
+            android:text="ID -" />
+
+        <TextView
+            android:id="@+id/emailid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginBottom="321dp"
+            android:layout_toRightOf="@id/mytextview1"
+            android:gravity="left"
+            android:text="Email - " />
+
+        <TextView
+            android:id="@+id/warnings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginBottom="266dp"
+            android:layout_toRightOf="@id/mytextview1"
+            android:gravity="left"
+            android:text="Pažeidimai - " />
+
+    </RelativeLayout>
+
     <Button
         android:id="@+id/chngbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="500dp"
         android:layout_marginEnd="209dp"
-        android:layout_marginBottom="172dp"
+        android:layout_marginBottom="30dp"
         android:text="Pakeisti slaptažodį"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView8"
@@ -34,20 +119,5 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ListView
-        android:id="@+id/listview1"
-        android:layout_width="395dp"
-        android:layout_height="379dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.216" />
 
 </android.support.constraint.ConstraintLayout>

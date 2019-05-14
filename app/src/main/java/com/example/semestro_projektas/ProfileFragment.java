@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,11 +35,13 @@ public class ProfileFragment extends Fragment {
     private ListView view;
     ArrayList<String> listItems=new ArrayList<String>();
     ArrayAdapter<String> adapter;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
         Button b = rootView.findViewById(R.id.chngbtn);
+
         b.setOnClickListener(new View.OnClickListener()
 
         {
@@ -51,29 +54,24 @@ public class ProfileFragment extends Fragment {
 
         });
 
-        GetData();
+
         return rootView;
     }
-    public void GetData(){
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        myRef = mFirebaseDatabase.getReference();
 
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         myRef = mFirebaseDatabase.getReference("users");
-        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
-        System.out.println(currentFirebaseUser.getEmail());
-        final String a = currentFirebaseUser.getUid();
+        super.onCreate(savedInstanceState);
+
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-               String tipas = dataSnapshot.child(a).child("Tipas").getValue(String.class);
-
-               if(tipas.contains("1")){
-                   tipas = "Cecho vadovas";
-               }else if(tipas.contains("2")){
-                   tipas = "Administratorius";
-               }else  if(tipas.contains("3")){
-                   tipas = "Inžinierius";
-               }
+                showdata(dataSnapshot);
             }
 
             @Override
@@ -82,7 +80,43 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+
+    }
+
+    public void showdata(DataSnapshot dataSnapshot) {
+
+        TextView type = (TextView)getView().findViewById(R.id.pareig);
+        TextView worksSince = (TextView)getView().findViewById(R.id.dirbn);
+        TextView id = (TextView)getView().findViewById(R.id.textid);
+        TextView Warnings = (TextView)getView().findViewById(R.id.warnings);
+        TextView email = (TextView)getView().findViewById(R.id.emailid);
+        TextView name = (TextView)getView().findViewById(R.id.darte2);
+        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        System.out.println(currentFirebaseUser.getEmail());
+        final String a = currentFirebaseUser.getUid();
+        String tipas = dataSnapshot.child(a).child("Tipas").getValue(String.class);
+        String vardas = dataSnapshot.child(a).child("Vardas").getValue(String.class);
+        String dirban = dataSnapshot.child(a).child("Dirbanuo").getValue(String.class);
+        String warnin = dataSnapshot.child(a).child("Pazeidimai").getValue(String.class);
+        if (tipas.contains("1")) {
+            tipas = "Cecho vadovas";
+        } else if (tipas.contains("2")) {
+            tipas = "Administratorius";
+        } else if (tipas.contains("3")) {
+            tipas = "Inžinierius";
+        }
+        type.setText("Pareigos - "+tipas);
+        worksSince.setText("Dirba nuo - - "+dirban);
+        id.setText("Vartotojo ID  - "+a);
+        email.setText("Email - "+currentFirebaseUser.getEmail());
+        name.setText("Vardas  - "+vardas);
+        Warnings.setText("Įspėjimai - "+warnin);
     }
 
 
+
 }
+
+
+
+

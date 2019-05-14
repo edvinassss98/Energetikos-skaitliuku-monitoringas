@@ -38,6 +38,10 @@
             android:icon="@drawable/ic_warning"
             android:title="Ispejimai" />
         <item
+            android:id="@+id/nav_Profilis"
+            android:icon="@drawable/ic_profile"
+            android:title="Vartotojo profilis" />
+        <item
             android:id="@+id/nav_Valdymas"
             android:icon="@drawable/ic_admin"
             android:title="Valdymo meniu" />

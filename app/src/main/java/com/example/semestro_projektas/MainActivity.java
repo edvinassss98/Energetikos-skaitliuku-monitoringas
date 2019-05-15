@@ -2,6 +2,7 @@ package com.example.semestro_projektas;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.NetworkOnMainThreadException;
@@ -29,9 +30,11 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.content.ClipData.*;
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
     private DrawerLayout drawer;
     private long backPressedTime;
     private Toast backToast;
@@ -49,10 +52,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
 
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        myRef = mFirebaseDatabase.getReference("information");
+        myRef = mFirebaseDatabase.getReference("users");
         drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        final NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String tipas = showdata(dataSnapshot);
+                if(tipas.contains("2")){
+                navigationView.getMenu().getItem(4).setVisible(false);
+                navigationView.getMenu().getItem(6).setVisible(false);
+                }else if(tipas.contains("3")){
+                    navigationView.getMenu().getItem(4).setVisible(false);
+                    navigationView.getMenu().getItem(6).setVisible(false);
+                    navigationView.getMenu().getItem(1).setVisible(false);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         View headerView = navigationView.getHeaderView(0);
         TextView navUsername = (TextView) headerView.findViewById(R.id.userEmail);
         navUsername.setText(currentFirebaseUser.getEmail());
@@ -78,6 +102,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
 
     }
+    public String showdata(DataSnapshot dataSnapshot) {
+        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        final String a = currentFirebaseUser.getUid();
+        String busena1 = dataSnapshot.child(a).child("Tipas").getValue(String.class);
+
+        return busena1;
+
+    }
 
 
 
@@ -85,6 +117,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     //Here is if menu fragment is pushed, moves to that fragment
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        int selectedposition= 0;
         switch (menuItem.getItemId())
         {
             case R.id.nav_Ataskaitos:
@@ -100,11 +133,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
                 break;
             case R.id.nav_Infomacija:
+
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new InformationActivity()).commit();
                 break;
             case R.id.nav_Schema:
-                Intent intent = new Intent(MainActivity.this, WorkshopScheme.class);
-                startActivity(intent);
+                int item = menuItem.getItemId();
+                System.out.println( item);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new WorkshopScheme()).commit();
                 break;
             default:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new InformationActivity()).commit();

@@ -4,10 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog.Builder;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -33,23 +35,19 @@ import com.google.firebase.database.ValueEventListener;
 
 
 
-public class WorkshopScheme extends AppCompatActivity {
-    private FirebaseDatabase mFirebaseDatabase;
-    private DatabaseReference myRef;
-    private FirebaseAuth mAuth;
-    String busena;
-    String tipas;
-    String sanaudos;
-    final Context context = this;
-    private FirebaseAuth.AuthStateListener mAuthListener;
+public class WorkshopScheme extends Fragment {
 
+
+    private ImageButton button;
+
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.workshop_scheme, container, false);
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.workshop_scheme);
 
-        final ImageButton button=(ImageButton)findViewById(R.id.imageButton1);
+        button=(ImageButton)rootView.findViewById(R.id.imageButton1);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,23 +59,23 @@ public class WorkshopScheme extends AppCompatActivity {
                 myRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                       tipas= showdatat(dataSnapshot);
-                       busena= showdatab(dataSnapshot);
-                       sanaudos= showdatas(dataSnapshot);
-                       AlertDialog.Builder builder = new Builder(WorkshopScheme.this);
-                       builder.create();
-                       builder.setTitle("Informacija apie skaitliuką");
-                       builder.setMessage("ID: V1\n"+"Tipas: " + tipas+"\n"+"Busena: "+busena+
-                               "\nSąnaudos:"+sanaudos+"\nPranešimas").setPositiveButton("Registruoti pranešimą", new DialogInterface.OnClickListener() {
+                        tipas= showdatat(dataSnapshot);
+                        busena= showdatab(dataSnapshot);
+                        sanaudos= showdatas(dataSnapshot);
+                        AlertDialog.Builder builder = new Builder(getActivity());
+                        builder.create();
+                        builder.setTitle("Informacija apie skaitliuką");
+                        builder.setMessage("ID: V1\n"+"Tipas: " + tipas+"\n"+"Busena: "+busena+
+                                "\nSąnaudos:"+sanaudos+"\nPranešimas").setPositiveButton("Registruoti pranešimą", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which){
-                                LayoutInflater li = LayoutInflater.from(context);
+                                LayoutInflater li = LayoutInflater.from(getActivity());
                                 View promptsView = li.inflate(R.layout.workshop_scheme, null);
 
-                                AlertDialog.Builder alert = new AlertDialog.Builder(WorkshopScheme.this);
+                                AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
                                 alert.setTitle("Registruojamas pranešimas");
 
-                                final EditText input = new EditText(WorkshopScheme.this);
+                                final EditText input = new EditText(getActivity());
                                 alert.setView(input);
                                 alert.setPositiveButton("Siųsti", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int whichButton) {
@@ -97,13 +95,13 @@ public class WorkshopScheme extends AppCompatActivity {
 
                             };
                         });
-                       builder.setNegativeButton("Atšaukti", new DialogInterface.OnClickListener() {
-                           @Override
-                           public void onClick(DialogInterface dialog, int which) {
+                        builder.setNegativeButton("Atšaukti", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
 
-                           }
-                       });
-                       builder.show();
+                            }
+                        });
+                        builder.show();
                     }
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
@@ -113,7 +111,19 @@ public class WorkshopScheme extends AppCompatActivity {
 
             }
         });
+        return rootView;
+
     }
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference myRef;
+    private FirebaseAuth mAuth;
+    String busena;
+    String tipas;
+    String sanaudos;
+
+    private FirebaseAuth.AuthStateListener mAuthListener;
+
+
     public String showdatab(DataSnapshot dataSnapshot) {
     String busena1 = dataSnapshot.child("Informacija").child("Busena").getValue(String.class);
 

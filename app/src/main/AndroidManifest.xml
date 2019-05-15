@@ -31,9 +31,7 @@
             android:parentActivityName=".MainActivity"/>
         <activity android:name=".ChangingPassword"
             android:parentActivityName=".MainActivity"/>
-        <activity
-            android:name=".WorkshopScheme"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+
         <activity
             android:name=".LoginActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>

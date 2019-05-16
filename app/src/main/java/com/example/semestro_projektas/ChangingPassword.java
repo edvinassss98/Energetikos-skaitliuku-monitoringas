@@ -43,11 +43,11 @@ public class ChangingPassword extends AppCompatActivity {
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference myRef;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.changing_password);
+        mProgress = new ProgressDialog(this);
         mAuth = FirebaseAuth.getInstance();
         change = (Button) findViewById(R.id.change2);
         change.setOnClickListener(new View.OnClickListener() {
@@ -84,13 +84,16 @@ public class ChangingPassword extends AppCompatActivity {
                 final String newp2 = newpsw2.getText().toString().trim();
                 final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("users");
                 final DatabaseReference currentUserDB = mDatabase.child(mAuth.getCurrentUser().getUid());
-                FirebaseUser currentFirebaseUsers = FirebaseAuth.getInstance().getCurrentUser();
-                if (!TextUtils.isEmpty(oldp) && !TextUtils.isEmpty(newp) && !TextUtils.isEmpty(newp2)) {
+
+                if (!TextUtils.isEmpty(oldp) && !TextUtils.isEmpty(newp) && !TextUtils.isEmpty(newp2)&&newp.equals(newp2)) {
                     AuthCredential credential = EmailAuthProvider.getCredential(email, oldp);
-                    currentFirebaseUsers.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    mProgress.setMessage("Slaptažodis keičiamas");
+                    mProgress.show();
+                    currentFirebaseUser.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
+                                mProgress.dismiss();
                                 currentFirebaseUser.updatePassword(newp2).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
@@ -103,6 +106,7 @@ public class ChangingPassword extends AppCompatActivity {
                                     }
                                 });
                             }else{
+                                mProgress.dismiss();
                                 Toast.makeText(ChangingPassword.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
 
                             }

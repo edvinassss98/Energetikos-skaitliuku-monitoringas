@@ -1,5 +1,6 @@
 package com.example.semestro_projektas;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -25,14 +26,14 @@ public class InformationActivity extends Fragment {
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference myRef;
     private List<String> data = new ArrayList<>();
-
+    private ProgressDialog mProgressDialog;
     private List<WorkshopInformation> workshopInformations = new ArrayList<>();
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_information, container, false);
-
+        mProgressDialog = new ProgressDialog(getActivity());
         return rootView;
 
     }
@@ -53,7 +54,9 @@ public class InformationActivity extends Fragment {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                mProgressDialog.setMessage("Kraunami duomenys");
                 showdata(dataSnapshot);
+                mProgressDialog.dismiss();
             }
 
             @Override

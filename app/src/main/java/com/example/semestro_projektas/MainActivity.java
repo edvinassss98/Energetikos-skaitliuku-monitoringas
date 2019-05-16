@@ -55,14 +55,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
 
-        Date c = Calendar.getInstance().getTime();
-        System.out.println("Current time => " + c);
-        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
-        String formattedDate = df.format(c);
 
-        String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
-
-        currentDateTimeString=currentDateTimeString.replaceAll("\\s+","");
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         myRef = mFirebaseDatabase.getReference("users");
         drawer = findViewById(R.id.drawer_layout);

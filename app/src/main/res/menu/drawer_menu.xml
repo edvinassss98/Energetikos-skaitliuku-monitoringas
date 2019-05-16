@@ -4,23 +4,19 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_Skaitliukai"
-            android:icon="@drawable/ic_example"
-            android:title="Skaitliukai">
-                <item android:id="@+id/Electricity"
-                    android:icon="@drawable/ic_electricity"
-                    android:title="Elektra"/>
-                <item android:id="@+id/Water"
-                    android:icon="@drawable/ic_laikinas"
-                    android:title="Vanduo"/>
-                <item android:id="@+id/Gas"
-                    android:icon="@drawable/ic_laikinas"
-                    android:title="Dujos"/>
+        <item android:id="@+id/Electricity"
+            android:icon="@drawable/ic_electricity"
+            android:title="Elektra"/>
+        <item android:id="@+id/Water"
+            android:icon="@drawable/ic_laikinas"
+            android:title="Vanduo"/>
+        <item android:id="@+id/Gas"
+            android:icon="@drawable/ic_laikinas"
+            android:title="Dujos"/>
 
 
 
-        </item>
+
 
         <item
             android:id="@+id/nav_Ataskaitos"

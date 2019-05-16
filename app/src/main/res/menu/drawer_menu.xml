@@ -9,15 +9,19 @@
             android:icon="@drawable/ic_example"
             android:title="Skaitliukai">
                 <item android:id="@+id/Electricity"
+                    android:icon="@drawable/ic_electricity"
                     android:title="Elektra"/>
                 <item android:id="@+id/Water"
+                    android:icon="@drawable/ic_laikinas"
                     android:title="Vanduo"/>
                 <item android:id="@+id/Gas"
+                    android:icon="@drawable/ic_laikinas"
                     android:title="Dujos"/>
 
 
 
         </item>
+
         <item
             android:id="@+id/nav_Ataskaitos"
             android:icon="@drawable/ic_reports"

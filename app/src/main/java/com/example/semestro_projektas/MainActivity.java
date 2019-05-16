@@ -134,8 +134,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         {
 
             case R.id.Electricity:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ElectricityFragment()).commit();
+
                 break;
             case R.id.Gas:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new GasFragment()).commit();
+
                 break;
             case R.id.Water:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new WaterFragment()).commit();

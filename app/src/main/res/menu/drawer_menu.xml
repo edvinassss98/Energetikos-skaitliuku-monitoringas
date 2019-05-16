@@ -8,17 +8,14 @@
             android:id="@+id/nav_Skaitliukai"
             android:icon="@drawable/ic_example"
             android:title="Skaitliukai">
-
-            <menu>
-
                 <item android:id="@+id/Electricity"
                     android:title="Elektra"/>
-                <item android:id="@+id/Pressure"
-                    android:title="Slėgis"/>
+                <item android:id="@+id/Water"
+                    android:title="Vanduo"/>
                 <item android:id="@+id/Gas"
                     android:title="Dujos"/>
 
-            </menu>
+
 
         </item>
         <item

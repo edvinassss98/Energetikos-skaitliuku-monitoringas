@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.Intent;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.os.NetworkOnMainThreadException;
 import android.support.annotation.NonNull;
@@ -27,7 +28,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static android.content.ClipData.*;
@@ -51,6 +55,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
 
+        Date c = Calendar.getInstance().getTime();
+        System.out.println("Current time => " + c);
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+        String formattedDate = df.format(c);
+
+        String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
+
+        currentDateTimeString=currentDateTimeString.replaceAll("\\s+","");
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         myRef = mFirebaseDatabase.getReference("users");
         drawer = findViewById(R.id.drawer_layout);
@@ -120,6 +132,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int selectedposition= 0;
         switch (menuItem.getItemId())
         {
+
+            case R.id.Electricity:
+                break;
+            case R.id.Gas:
+                break;
+            case R.id.Water:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new WaterFragment()).commit();
+
+                break;
             case R.id.nav_Ataskaitos:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ReportsFragment()).commit();
                 break;
@@ -133,7 +154,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
                 break;
             case R.id.nav_Infomacija:
-
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new InformationActivity()).commit();
                 break;
             case R.id.nav_Schema:

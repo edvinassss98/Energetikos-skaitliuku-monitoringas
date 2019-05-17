@@ -46,12 +46,17 @@ public class WarningsFragment extends Fragment {
             public void onDataChange(final DataSnapshot dataSnapshot) {
 
                final LinearLayout layout = (LinearLayout) rootView.findViewById(R.id.layout);
+                layout.removeAllViews();
+                layout.addView(text);
+                text.setText("Įspėjimų sąrašas");
+                text.setTextSize(28);
+                text.setTypeface(Typeface.DEFAULT_BOLD);
 
-
+                Button btn = new Button(getActivity());
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     final String myValues = snapshot.getKey();
                     layout.setOrientation(LinearLayout.VERTICAL);
-                    Button btn = new Button(getActivity());
+                    btn=new Button(getActivity());
                     layout.addView(btn);
                     btn.setText(myValues);
                     btn.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
@@ -67,11 +72,6 @@ public class WarningsFragment extends Fragment {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
                                             dataSnapshot.child(myValues).getRef().removeValue();
-                                            layout.removeAllViews();
-                                            layout.addView(text);
-                                            text.setText("Įspėjimų sąrašas");
-                                            text.setTextSize(28);
-                                            text.setTypeface(Typeface.DEFAULT_BOLD);
 
                                         }
                                     }).setNegativeButton("Atšaukti", new DialogInterface.OnClickListener() {

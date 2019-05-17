@@ -15,6 +15,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <activity
@@ -28,14 +29,21 @@
         </activity>
 
         <activity android:name=".CreateAccountActivity"
+            android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity"/>
         <activity android:name=".UsersList"
+            android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity"/>
         <activity android:name=".ChangingPassword"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".ReportsFragment"
+            android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity"/>
 
         <activity
             android:name=".LoginActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

@@ -1,9 +1,7 @@
 package com.example.semestro_projektas;
 
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,13 +11,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.Toast;
 
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -76,17 +70,29 @@ public class WaterFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String tipas = dataSnapshot.child("Informacija").child("Tipas").getValue(String.class);
                 String Busena = dataSnapshot.child("Informacija").child("Busena").getValue(String.class);
-                String sanaudosG = dataSnapshot.child("Sanaudos").child("Geguze").getValue(String.class);
-                String sanaudosB = dataSnapshot.child("Sanaudos").child("Balandis").getValue(String.class);
-                String sanaudosK = dataSnapshot.child("Sanaudos").child("Kovas").getValue(String.class);
+                final String sanaudosG = dataSnapshot.child("Sanaudos").child("Geguze").getValue(String.class);
+                final String sanaudosB = dataSnapshot.child("Sanaudos").child("Balandis").getValue(String.class);
+                final String sanaudosK = dataSnapshot.child("Sanaudos").child("Kovas").getValue(String.class);
+                final String sanaudosS = dataSnapshot.child("Sanaudos").child("Sausis").getValue(String.class);
+                final String sanaudosV = dataSnapshot.child("Sanaudos").child("Vasaris").getValue(String.class);
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.create();
                 builder.setTitle("Informacija apie vandens skaitliuką");
-                builder.setMessage("ID:"+id+"\n"+"Tipas: " + tipas+"\n"+"Būsena: "+Busena+
-                        "\nSąnaudos geguže: "+sanaudosG+
-                        "\nSąnaudos balandi: "+sanaudosB+
-                        "\nSąnaudos Kova: "+sanaudosK)
-                        .setPositiveButton("Uždaryti", new DialogInterface.OnClickListener() {
+                builder.setMessage("ID:" + id + "\n" + "Tipas: " + tipas + "\n" + "Būsena: " + Busena +
+                        "\nSąnaudos einamąjį mėnėsį : " + sanaudosG )
+                        .setPositiveButton("Daugiau informacijos", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(getActivity(),ReportsFragment.class);
+                                intent.putExtra("id", id);
+                                intent.putExtra("geguze", sanaudosG);
+                                intent.putExtra("balandis", sanaudosB);
+                                intent.putExtra("kovas", sanaudosK);
+                                intent.putExtra("sausis", sanaudosS);
+                                intent.putExtra("vasaris", sanaudosV);
+                                startActivity(intent);
+                            }
+                        }).setNegativeButton("Uždaryti", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -95,7 +101,6 @@ public class WaterFragment extends Fragment {
                 });
                 builder.show();
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
 

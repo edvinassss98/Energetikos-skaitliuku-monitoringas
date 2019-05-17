@@ -1,6 +1,7 @@
 package com.example.semestro_projektas;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -65,25 +66,37 @@ public class ElectricityFragment extends Fragment {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String tipas = dataSnapshot.child("Informacija").child("Tipas").getValue(String.class);
-                String Busena = dataSnapshot.child("Informacija").child("Busena").getValue(String.class);
-                String sanaudosG = dataSnapshot.child("Sanaudos").child("Geguze").getValue(String.class);
-                String sanaudosB = dataSnapshot.child("Sanaudos").child("Balandis").getValue(String.class);
-                String sanaudosK = dataSnapshot.child("Sanaudos").child("Kovas").getValue(String.class);
+                final String tipas = dataSnapshot.child("Informacija").child("Tipas").getValue(String.class);
+                final String Busena = dataSnapshot.child("Informacija").child("Busena").getValue(String.class);
+                final String sanaudosG = dataSnapshot.child("Sanaudos").child("Geguze").getValue(String.class);
+                final String sanaudosB = dataSnapshot.child("Sanaudos").child("Balandis").getValue(String.class);
+                final String sanaudosK = dataSnapshot.child("Sanaudos").child("Kovas").getValue(String.class);
+                final String sanaudosS = dataSnapshot.child("Sanaudos").child("Sausis").getValue(String.class);
+                final String sanaudosV = dataSnapshot.child("Sanaudos").child("Vasaris").getValue(String.class);
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.create();
                 builder.setTitle("Informacija apie elektros skaitliuką");
                 builder.setMessage("ID:"+id+"\n"+"Tipas: " + tipas+"\n"+"Būsena: "+Busena+
-                        "\nSąnaudos geguže: "+sanaudosG+
-                        "\nSąnaudos balandi: "+sanaudosB+
-                        "\nSąnaudos Kova: "+sanaudosK)
-                        .setPositiveButton("Uždaryti", new DialogInterface.OnClickListener() {
+                        "\nSąnaudos einamąjį mėnėsį : " + sanaudosG )
+                        .setPositiveButton("Daugiau informacijos", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
+                                Intent intent = new Intent(getActivity(),ReportsFragment.class);
+                                intent.putExtra("id", id);
+                                intent.putExtra("geguze", sanaudosG);
+                                intent.putExtra("balandis", sanaudosB);
+                                intent.putExtra("kovas", sanaudosK);
+                                intent.putExtra("sausis", sanaudosS);
+                                intent.putExtra("vasaris", sanaudosV);
+                                startActivity(intent);
                             }
+                        }).setNegativeButton("Uždaryti", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
-                        });
+                    }
+
+                });
                 builder.show();
             }
 

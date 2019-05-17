@@ -1,12 +1,6 @@
 package com.example.semestro_projektas;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
-import android.content.ClipData;
-import android.content.Intent;
-import android.icu.util.Calendar;
 import android.os.Bundle;
-import android.os.NetworkOnMainThreadException;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -27,15 +21,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import static android.content.ClipData.*;
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -138,8 +123,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new WaterFragment()).commit();
 
                 break;
-            case R.id.nav_Ataskaitos:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ReportsFragment()).commit();
+            case R.id.nav_Ispejimai:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new WarningsFragment()).commit();
                 break;
             case R.id.nav_Atsijungti:
                 turnOff();

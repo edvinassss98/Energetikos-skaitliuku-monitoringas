@@ -20,6 +20,7 @@ public class ManagementActivity extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        getActivity().setTitle("Valdymo meniu");
         View rootView = inflater.inflate(R.layout.fragment_management, container, false);
         Button b = rootView.findViewById(R.id.btn1Create);
         Button c = rootView.findViewById(R.id.btn1Create2);

@@ -20,6 +20,7 @@ public class UsersList extends AppCompatActivity {
     private DatabaseReference myRef;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.users_list);
 

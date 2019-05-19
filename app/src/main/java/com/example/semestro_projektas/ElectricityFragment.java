@@ -27,6 +27,7 @@ public class ElectricityFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        getActivity().setTitle("Elektros skaitliukai");
         View rootView = inflater.inflate(R.layout.fragment_electricity, container, false);
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         myRef = mFirebaseDatabase.getReference("Skaitliukai/Elektros");

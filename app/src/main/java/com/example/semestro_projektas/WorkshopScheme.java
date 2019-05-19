@@ -55,7 +55,7 @@ public class WorkshopScheme extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.workshop_scheme, container, false);
-
+        getActivity().setTitle("Schema");
         super.onCreate(savedInstanceState);
 
         button2=(ImageButton)rootView.findViewById(R.id.imageButton2);

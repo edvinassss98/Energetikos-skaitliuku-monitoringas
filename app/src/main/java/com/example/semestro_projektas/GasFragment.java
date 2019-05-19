@@ -27,6 +27,7 @@ public class GasFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        getActivity().setTitle("Dujų skaitliukai");
         View rootView = inflater.inflate(R.layout.fragment_gas, container, false);
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         myRef = mFirebaseDatabase.getReference("Skaitliukai/Dujos");

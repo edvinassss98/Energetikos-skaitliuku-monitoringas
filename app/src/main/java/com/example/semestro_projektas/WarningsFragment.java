@@ -31,7 +31,7 @@ public class WarningsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_warnings, container, false);
         super.onCreate(savedInstanceState);
-
+        getActivity().setTitle("Įspėjimai");
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         myRef = mFirebaseDatabase.getReference("Pranešimas");
 

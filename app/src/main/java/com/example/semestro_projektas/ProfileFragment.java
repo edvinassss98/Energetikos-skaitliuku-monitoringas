@@ -40,6 +40,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
         Button b = rootView.findViewById(R.id.chngbtn);
+        getActivity().setTitle("Vartotojo profilis");
         b.setOnClickListener(new View.OnClickListener()
 
         {

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="176dp"
     android:background="@color/colorAccent"
@@ -10,19 +11,17 @@
 
     <ImageView
         android:id="@+id/userPhoto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_person" />
 
-    <TextView
-        android:id="@+id/userAbillity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="8dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:layout_width="101dp"
+        android:layout_height="106dp"
+        android:src="@drawable/esm_icon_round"
+        android:visibility="visible" />
 
     <TextView
         android:id="@+id/userEmail"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/ic_launcher_background"
+        android:visibility="visible" />
 </LinearLayout>

@@ -32,8 +32,6 @@ public class WaterFragment extends Fragment {
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         myRef = mFirebaseDatabase.getReference("Skaitliukai/Vandens");
 
-
-
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -53,7 +51,6 @@ public class WaterFragment extends Fragment {
                     });
                 }
             }
-
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -95,15 +92,12 @@ public class WaterFragment extends Fragment {
                         }).setNegativeButton("Uždaryti", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
                     }
-
                 });
                 builder.show();
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
     }

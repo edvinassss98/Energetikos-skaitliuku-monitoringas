@@ -8,8 +8,6 @@ import android.view.WindowManager;
 import android.widget.ProgressBar;
 
 public class SplashScreenActivity extends Activity {
-
-    // Splash screen timer
     private static int SPLASH_TIME_OUT = 2000;
     private ProgressBar progressBar;
     private int progressStatus = 0;
@@ -38,7 +36,6 @@ public class SplashScreenActivity extends Activity {
                     });
                     try {
                         // Sleep for 200 milliseconds.
-
                         //Just to display the progress slowly
                         Thread.sleep(20);
                     } catch (InterruptedException e) {

@@ -14,25 +14,17 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.util.ArrayList;
 
 public class ReportsFragment extends AppCompatActivity {
-
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_reports);
-        BarChart barChart = (BarChart) findViewById(R.id.bargraph); // tried before getview
-
+        BarChart barChart = (BarChart) findViewById(R.id.bargraph);
         Bundle bundle = getIntent().getExtras();
-
-
         String id = bundle.getString("id");
         String geguze = bundle.getString("geguze");
         String balandis = bundle.getString("balandis");
         String kovas = bundle.getString("kovas");
         String sausis = bundle.getString("sausis");
         String vasaris = bundle.getString("vasaris");
-
-
-
 
         float geguze1 = Float.parseFloat(geguze);
         float balandis1 = Float.parseFloat(balandis);
@@ -57,7 +49,7 @@ public class ReportsFragment extends AppCompatActivity {
         xValues.add("Vasaris");
         xValues.add("Kovas");
         xValues.add("Balandis");
-        xValues.add("Geguze");
+        xValues.add("Gegužė");
 
         ArrayList<BarDataSet> dataSets = new ArrayList<>();  // combined all dataset into an arraylist
         dataSets.add(barDataSet1);
@@ -70,12 +62,10 @@ public class ReportsFragment extends AppCompatActivity {
         xAxis1.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis1.setValueFormatter((new IndexAxisValueFormatter(xValues)));
 
-
         BarData data = new BarData(barDataSet1);
         barChart.setData(data);
         barChart.setScaleEnabled(false);
-
+        barChart.getDescription().setEnabled(false);
     }
-
 
 }

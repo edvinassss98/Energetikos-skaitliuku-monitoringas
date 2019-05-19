@@ -73,9 +73,6 @@ public class CreateAccountActivity extends AppCompatActivity implements AdapterV
         });
         getSupportActionBar().setTitle("Vartotojo kūrimas");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
-
     }
     @Override
     protected void onStart() {
@@ -83,8 +80,6 @@ public class CreateAccountActivity extends AppCompatActivity implements AdapterV
         FirebaseApp.initializeApp(this);
 
     }
-
-
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
@@ -102,7 +97,6 @@ public class CreateAccountActivity extends AppCompatActivity implements AdapterV
             case 3:
                 Type = "3";
                 break;
-
         }
     }
 
@@ -133,9 +127,7 @@ public class CreateAccountActivity extends AppCompatActivity implements AdapterV
                     });
         }else
             Toast.makeText(CreateAccountActivity.this, "Įveskite visus duomenis", Toast.LENGTH_SHORT).show();
-
     }
-
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {

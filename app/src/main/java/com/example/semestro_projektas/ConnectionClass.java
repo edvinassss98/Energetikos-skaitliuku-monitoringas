@@ -23,7 +23,6 @@ public class ConnectionClass {
         Connection conn = null;
         String ConnURL = null;
         try {
-
             Class.forName(classs);
             ConnURL = "jdbc:jtds:sqlserver://" + ip + ";"
                     + "databaseName=" + db + ";user=" + un + ";password="

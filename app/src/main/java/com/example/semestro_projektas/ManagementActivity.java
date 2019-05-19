@@ -17,7 +17,6 @@ public class ManagementActivity extends Fragment {
     ConnectionClass connectionClass;
     View inflatedView = null;
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -31,7 +30,6 @@ public class ManagementActivity extends Fragment {
             {
                 Intent intent = new Intent(getActivity(), CreateAccountActivity.class);
                 startActivity(intent);
-
             }
 
         });
@@ -42,13 +40,10 @@ public class ManagementActivity extends Fragment {
             {
                 Intent intent = new Intent(getActivity(), UsersList.class);
                 startActivity(intent);
-
             }
 
         });
         return rootView;
-
-
     }
 
 

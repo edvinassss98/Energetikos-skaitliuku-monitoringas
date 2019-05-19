@@ -31,8 +31,6 @@ public class ElectricityFragment extends Fragment {
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         myRef = mFirebaseDatabase.getReference("Skaitliukai/Elektros");
 
-
-
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -52,10 +50,8 @@ public class ElectricityFragment extends Fragment {
                 }
             }
 
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
         return rootView;
@@ -93,7 +89,6 @@ public class ElectricityFragment extends Fragment {
                         }).setNegativeButton("Uždaryti", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
                     }
 
                 });
@@ -102,7 +97,6 @@ public class ElectricityFragment extends Fragment {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
     }

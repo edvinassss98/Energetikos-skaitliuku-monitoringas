@@ -35,10 +35,8 @@ public class InformationActivity extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_information, container, false);
         mProgressDialog = new ProgressDialog(getActivity());
         return rootView;
-
     }
     public void setText(String a){
-
     }
 
     @Override
@@ -46,7 +44,6 @@ public class InformationActivity extends Fragment {
 
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         myRef = mFirebaseDatabase.getReference();
-
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         myRef = mFirebaseDatabase.getReference("information");
         super.onCreate(savedInstanceState);
@@ -61,11 +58,8 @@ public class InformationActivity extends Fragment {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
-
-
     }
     private void showdata(DataSnapshot dataSnapshot) {
         String Adresas = dataSnapshot.child("Adresas").getValue(String.class);
@@ -83,9 +77,5 @@ public class InformationActivity extends Fragment {
         Cecho_vad1.setText("Cecho_vadovas - "+Cecho_vad);
         Darb_Sk1.setText("Darbuotojų skaičius - "+Darb_Sk);
         Aukstai1.setText("Aukstai - "+Aukstai);
-
-
-
-
     }
 }

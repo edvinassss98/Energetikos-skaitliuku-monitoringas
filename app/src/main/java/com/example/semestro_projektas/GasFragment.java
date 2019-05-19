@@ -31,8 +31,6 @@ public class GasFragment extends Fragment {
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         myRef = mFirebaseDatabase.getReference("Skaitliukai/Dujos");
 
-
-
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -51,7 +49,6 @@ public class GasFragment extends Fragment {
                     });
                 }
             }
-
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -95,9 +92,7 @@ public class GasFragment extends Fragment {
                         }).setNegativeButton("Uždaryti", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
                     }
-
                 });
                 builder.show();
             }

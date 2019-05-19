@@ -100,7 +100,6 @@ public class ChangingPassword extends AppCompatActivity {
                                         if (task.isSuccessful()) {
                                             currentUserDB.child("Slaptažodis").setValue(newp2);
                                             Toast.makeText(ChangingPassword.this, "Pakeitimas sėkmingas", Toast.LENGTH_SHORT).show();
-
                                         } else
                                             Toast.makeText(ChangingPassword.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                     }
@@ -108,11 +107,9 @@ public class ChangingPassword extends AppCompatActivity {
                             }else{
                                 mProgress.dismiss();
                                 Toast.makeText(ChangingPassword.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-
                             }
                         }
                     });
-
                 } else
                     Toast.makeText(ChangingPassword.this, "Įveskite visus laukus/arba slaptažodžiai nesutinka", Toast.LENGTH_SHORT).show();
             }

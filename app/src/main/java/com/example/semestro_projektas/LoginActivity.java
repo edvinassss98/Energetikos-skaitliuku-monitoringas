@@ -42,8 +42,6 @@ public class LoginActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-
-
         Name = (EditText)findViewById(R.id.etName);
         progressDialog = new ProgressDialog(this);
         Password = (EditText)findViewById(R.id.etPass);
@@ -65,11 +63,9 @@ public class LoginActivity extends Activity {
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
-                    //mAuth.signOut();
                 }
             }
         };
-
     }
     @Override
     protected void onStart() {
@@ -93,15 +89,12 @@ public class LoginActivity extends Activity {
                         if (task.isSuccessful()) {
                             Toast.makeText(LoginActivity.this, "Prisijungimas sėkmingas", Toast.LENGTH_SHORT).show();
                         } else
-                            Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Neteisingi duomenys", Toast.LENGTH_SHORT).show();
                     }
                 });
     }else
             Toast.makeText(LoginActivity.this, "Įveskite visus laukus", Toast.LENGTH_SHORT).show();
-
-
     }
-
 
     @Override
     public void onBackPressed() {
@@ -113,10 +106,7 @@ public class LoginActivity extends Activity {
         } else {
             backToast = Toast.makeText(getBaseContext(), "Paspauskite dar kartą jog išeiti", Toast.LENGTH_SHORT);
             backToast.show();
-
         }
         backPressedTime = System.currentTimeMillis();
-
-
     }
 }

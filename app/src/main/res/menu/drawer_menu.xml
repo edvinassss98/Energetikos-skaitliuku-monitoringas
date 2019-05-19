@@ -4,6 +4,11 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_Infomacija"
+            android:icon="@drawable/ic_info"
+
+            android:title="Pagrindinis" />
         <item android:id="@+id/Electricity"
             android:icon="@drawable/ic_electricity"
             android:title="Elektra"/>
@@ -11,27 +16,17 @@
             android:icon="@drawable/ic_laikinas"
             android:title="Vanduo"/>
         <item android:id="@+id/Gas"
-            android:icon="@drawable/ic_laikinas"
+            android:icon="@drawable/gas_icon"
             android:title="Dujos"/>
-
-
-
-
-
-
         <item
             android:id="@+id/nav_Schema"
             android:icon="@drawable/ic_scheme"
             android:title="Schema" />
-        <item
-            android:id="@+id/nav_Infomacija"
-            android:icon="@drawable/ic_info"
 
-            android:title="Informacija" />
         <item
             android:id="@+id/nav_Ispejimai"
             android:icon="@drawable/ic_warning"
-            android:title="Ispejimai" />
+            android:title="Įspėjimai" />
         <item
             android:id="@+id/nav_Profilis"
             android:icon="@drawable/ic_profile"
@@ -40,12 +35,11 @@
             android:id="@+id/nav_Valdymas"
             android:icon="@drawable/ic_admin"
             android:title="Valdymo meniu" />
-
     </group>
 
     <item
         android:id="@+id/nav_Atsijungti"
         android:icon="@drawable/ic_logoff"
-        android:title="Atsijungti" />
+        android:title="@string/atsijungti" />
 
 </menu>

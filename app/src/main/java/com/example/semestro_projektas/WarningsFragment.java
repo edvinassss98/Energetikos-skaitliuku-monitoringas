@@ -32,11 +32,8 @@ public class WarningsFragment extends Fragment {
         final View rootView = inflater.inflate(R.layout.fragment_warnings, container, false);
         super.onCreate(savedInstanceState);
 
-
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         myRef = mFirebaseDatabase.getReference("Pranešimas");
-
-
 
         myRef.addValueEventListener(new ValueEventListener() {
 
@@ -78,30 +75,20 @@ public class WarningsFragment extends Fragment {
                                         }).setNegativeButton("Atšaukti", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-
                                     }
-
                                 });
                                 builder.show();
-
-
                             }
                         });
                     }
                 }
             }
 
-
-
-
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 layout.removeAllViews();
             }
         });
-
-
         return rootView;
     }
 }

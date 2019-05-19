@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
 
-
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         myRef = mFirebaseDatabase.getReference("users");
         drawer = findViewById(R.id.drawer_layout);
@@ -57,13 +56,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     navigationView.getMenu().getItem(4).setVisible(false);
                     navigationView.getMenu().getItem(6).setVisible(false);
                     navigationView.getMenu().getItem(1).setVisible(false);
-
                 }
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
 
@@ -78,11 +74,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     new InformationActivity()).commit();
             navigationView.setCheckedItem(R.id.nav_Infomacija);
         }
-
         myRef.addValueEventListener(new ValueEventListener() {
+
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
             }
 
             @Override
@@ -90,19 +85,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             }
         });
-
     }
     public String showdata(DataSnapshot dataSnapshot) {
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         final String a = currentFirebaseUser.getUid();
         String busena1 = dataSnapshot.child(a).child("Tipas").getValue(String.class);
-
         return busena1;
 
     }
-
-
-
 
     //Here is if menu fragment is pushed, moves to that fragment
     @Override
@@ -110,18 +100,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int selectedposition= 0;
         switch (menuItem.getItemId())
         {
-
             case R.id.Electricity:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ElectricityFragment()).commit();
-
                 break;
             case R.id.Gas:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new GasFragment()).commit();
-
                 break;
             case R.id.Water:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new WaterFragment()).commit();
-
                 break;
             case R.id.nav_Ispejimai:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new WarningsFragment()).commit();
@@ -146,10 +132,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             default:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new InformationActivity()).commit();
                 break;
-
-
         }
-
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -157,7 +140,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onStart() {
         super.onStart();
         FirebaseApp.initializeApp(this);
-
     }
 
     @Override
@@ -167,24 +149,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             System.exit(0);
             return;
         } else {
-            backToast = Toast.makeText(getBaseContext(), "Paspauskite dar kartą jog išeiti", Toast.LENGTH_SHORT);
+            backToast = Toast.makeText(getBaseContext(), "Paspauskite dar kartą, jog išeiti", Toast.LENGTH_SHORT);
             backToast.show();
-
         }
         backPressedTime = System.currentTimeMillis();
-/*
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }*/
     }
-
 
     public void turnOff(){
         LogOffActivity logOffDialog = new LogOffActivity();
         logOffDialog.show(getSupportFragmentManager(),"logofdialog");
     }
-
-
 }

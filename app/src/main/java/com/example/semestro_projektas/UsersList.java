@@ -26,8 +26,6 @@ public class UsersList extends AppCompatActivity {
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         myRef = mFirebaseDatabase.getReference("users");
 
-
-
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -50,7 +48,6 @@ public class UsersList extends AppCompatActivity {
                         tipas = "Inžinierius";
                         btn.setText(myValues+ "  "+ tipas);
                     }
-
                     btn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -60,10 +57,8 @@ public class UsersList extends AppCompatActivity {
                 }
             }
 
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
     }

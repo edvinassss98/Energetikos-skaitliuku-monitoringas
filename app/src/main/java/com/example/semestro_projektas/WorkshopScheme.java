@@ -41,8 +41,6 @@ import java.util.Date;
 
 public class WorkshopScheme extends Fragment {
 
-
-    private ImageButton button;
     private ImageButton button2;
     private ImageButton button3;
     private ImageButton button4;
@@ -112,23 +110,19 @@ public class WorkshopScheme extends Fragment {
                                     }
                                 });
                                 alert.show();
-
                             };
                         });
                         builder.setNegativeButton("Atšaukti", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
                             }
                         });
                         builder.show();
                     }
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-
                     }
                 });
-
             }
         });
 
@@ -180,24 +174,20 @@ public class WorkshopScheme extends Fragment {
 
                                 alert.setNegativeButton("Atšaukti", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int whichButton) {
-
                                     }
                                 });
                                 alert.show();
-
                             };
                         });
                         builder.setNegativeButton("Atšaukti", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
                             }
                         });
                         builder.show();
                     }
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-
                     }
                 });
 
@@ -252,27 +242,22 @@ public class WorkshopScheme extends Fragment {
 
                                 alert.setNegativeButton("Atšaukti", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int whichButton) {
-
                                     }
                                 });
                                 alert.show();
-
                             };
                         });
                         builder.setNegativeButton("Atšaukti", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
                             }
                         });
                         builder.show();
                     }
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-
                     }
                 });
-
             }
         });
 
@@ -324,27 +309,22 @@ public class WorkshopScheme extends Fragment {
 
                                 alert.setNegativeButton("Atšaukti", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int whichButton) {
-
                                     }
                                 });
                                 alert.show();
-
                             };
                         });
                         builder.setNegativeButton("Atšaukti", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
                             }
                         });
                         builder.show();
                     }
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-
                     }
                 });
-
             }
         });
 
@@ -400,23 +380,19 @@ public class WorkshopScheme extends Fragment {
                                     }
                                 });
                                 alert.show();
-
                             };
                         });
                         builder.setNegativeButton("Atšaukti", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
                             }
                         });
                         builder.show();
                     }
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-
                     }
                 });
-
             }
         });
         button7=(ImageButton)rootView.findViewById(R.id.imageButton7);
@@ -467,27 +443,22 @@ public class WorkshopScheme extends Fragment {
 
                                 alert.setNegativeButton("Atšaukti", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int whichButton) {
-
                                     }
                                 });
                                 alert.show();
-
                             };
                         });
                         builder.setNegativeButton("Atšaukti", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
                             }
                         });
                         builder.show();
                     }
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-
                     }
                 });
-
             }
         });
 
@@ -543,23 +514,19 @@ public class WorkshopScheme extends Fragment {
                                     }
                                 });
                                 alert.show();
-
                             };
                         });
                         builder.setNegativeButton("Atšaukti", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
                             }
                         });
                         builder.show();
                     }
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-
                     }
                 });
-
             }
         });
         button9=(ImageButton)rootView.findViewById(R.id.imageButton9);
@@ -610,27 +577,22 @@ public class WorkshopScheme extends Fragment {
 
                                 alert.setNegativeButton("Atšaukti", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int whichButton) {
-
                                     }
                                 });
                                 alert.show();
-
                             };
                         });
                         builder.setNegativeButton("Atšaukti", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
                             }
                         });
                         builder.show();
                     }
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-
                     }
                 });
-
             }
         });
         button10=(ImageButton)rootView.findViewById(R.id.imageButton10);
@@ -681,7 +643,6 @@ public class WorkshopScheme extends Fragment {
 
                                 alert.setNegativeButton("Atšaukti", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int whichButton) {
-
                                     }
                                 });
                                 alert.show();
@@ -691,22 +652,19 @@ public class WorkshopScheme extends Fragment {
                         builder.setNegativeButton("Atšaukti", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
                             }
                         });
                         builder.show();
                     }
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-
                     }
                 });
-
             }
         });
         return rootView;
-
     }
+
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference myRef;
     private FirebaseAuth mAuth;
@@ -715,7 +673,6 @@ public class WorkshopScheme extends Fragment {
     String sanaudos;
 
     private FirebaseAuth.AuthStateListener mAuthListener;
-
 
     public String showdatab(DataSnapshot dataSnapshot) {
         return dataSnapshot.child("Informacija").child("Busena").getValue(String.class);

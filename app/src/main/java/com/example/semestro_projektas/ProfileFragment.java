@@ -27,7 +27,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class ProfileFragment extends Fragment {
-//iug
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference myRef;
     private FirebaseAuth mAuth;
@@ -41,7 +40,6 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
         Button b = rootView.findViewById(R.id.chngbtn);
-
         b.setOnClickListener(new View.OnClickListener()
 
         {
@@ -49,12 +47,9 @@ public class ProfileFragment extends Fragment {
             {
                 Intent intent = new Intent(getActivity(), ChangingPassword.class);
                 startActivity(intent);
-
             }
 
         });
-
-
         return rootView;
     }
 
@@ -63,7 +58,6 @@ public class ProfileFragment extends Fragment {
 
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         myRef = mFirebaseDatabase.getReference();
-
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         myRef = mFirebaseDatabase.getReference("users");
         super.onCreate(savedInstanceState);
@@ -79,12 +73,9 @@ public class ProfileFragment extends Fragment {
 
             }
         });
-
-
     }
 
     public void showdata(DataSnapshot dataSnapshot) {
-
         TextView type = (TextView)getView().findViewById(R.id.pareig);
         TextView worksSince = (TextView)getView().findViewById(R.id.dirbn);
         TextView id = (TextView)getView().findViewById(R.id.textid);
@@ -112,11 +103,4 @@ public class ProfileFragment extends Fragment {
         name.setText("Vardas  - "+vardas);
         Warnings.setText("Įspėjimai - "+warnin);
     }
-
-
-
 }
-
-
-
-

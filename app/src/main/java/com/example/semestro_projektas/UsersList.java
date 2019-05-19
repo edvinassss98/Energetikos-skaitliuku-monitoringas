@@ -23,7 +23,7 @@ public class UsersList extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.users_list);
-
+        getSupportActionBar().setTitle("Vartotojų sąrašas");
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         myRef = mFirebaseDatabase.getReference("users");
 

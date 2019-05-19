@@ -50,12 +50,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String tipas = showdata(dataSnapshot);
                 if(tipas.contains("2")){
-                navigationView.getMenu().getItem(4).setVisible(false);
-                navigationView.getMenu().getItem(6).setVisible(false);
+                navigationView.getMenu().getItem(5).setVisible(false);
+                navigationView.getMenu().getItem(7).setVisible(false);
                 }else if(tipas.contains("3")){
-                    navigationView.getMenu().getItem(4).setVisible(false);
-                    navigationView.getMenu().getItem(6).setVisible(false);
-                    navigationView.getMenu().getItem(1).setVisible(false);
+                    navigationView.getMenu().getItem(7).setVisible(false);
                 }
             }
             @Override

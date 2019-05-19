@@ -47,6 +47,7 @@ public class ChangingPassword extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.changing_password);
+        getSupportActionBar().setTitle("Slaptažodžio keitimas");
         mProgress = new ProgressDialog(this);
         mAuth = FirebaseAuth.getInstance();
         change = (Button) findViewById(R.id.change2);

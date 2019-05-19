@@ -49,8 +49,10 @@ public class CreateAccountActivity extends AppCompatActivity implements AdapterV
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_account);
+        getSupportActionBar().setTitle("Vartotojo kūrimas");
         Name = (EditText) findViewById(R.id.edusername);
         Password = (EditText) findViewById(R.id.atpass);
         mAuth = FirebaseAuth.getInstance();

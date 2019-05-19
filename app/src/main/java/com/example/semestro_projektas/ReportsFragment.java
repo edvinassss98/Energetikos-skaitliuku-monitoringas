@@ -20,6 +20,8 @@ public class ReportsFragment extends AppCompatActivity {
         BarChart barChart = (BarChart) findViewById(R.id.bargraph);
         Bundle bundle = getIntent().getExtras();
         String id = bundle.getString("id");
+
+        getSupportActionBar().setTitle(id+" Skaitliuko duomenys");
         String geguze = bundle.getString("geguze");
         String balandis = bundle.getString("balandis");
         String kovas = bundle.getString("kovas");

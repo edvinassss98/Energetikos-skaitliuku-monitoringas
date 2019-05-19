@@ -72,8 +72,8 @@ public class ElectricityFragment extends Fragment {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.create();
                 builder.setTitle("Informacija apie elektros skaitliuką");
-                builder.setMessage("ID:"+id+"\n"+"Tipas: " + tipas+"\n"+"Būsena: "+Busena+
-                        "\nSąnaudos einamąjį mėnėsį : " + sanaudosG )
+                builder.setMessage("ID: "+id+"\n"+"Tipas: " + tipas+"\n"+"Būsena: "+Busena+
+                        "\nSąnaudos einamajį mėnesį: " + sanaudosG )
                         .setPositiveButton("Daugiau informacijos", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -86,7 +86,7 @@ public class ElectricityFragment extends Fragment {
                                 intent.putExtra("vasaris", sanaudosV);
                                 startActivity(intent);
                             }
-                        }).setNegativeButton("Uždaryti", new DialogInterface.OnClickListener() {
+                        }).setNegativeButton("Atšaukti", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                     }

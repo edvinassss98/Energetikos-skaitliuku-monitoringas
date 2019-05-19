@@ -72,10 +72,10 @@ public class InformationActivity extends Fragment {
         TextView Cecho_vad1=(TextView) getView().findViewById(R.id.vadov);
         TextView Darb_Sk1=(TextView) getView().findViewById(R.id.Darb_sk);
         TextView Aukstai1=(TextView) getView().findViewById(R.id.aukstai);
-        pava.setText("Pavadinimas - "+Pavadinimas);
-        Adresas1.setText("Adresas - "+Adresas);
-        Cecho_vad1.setText("Cecho_vadovas - "+Cecho_vad);
-        Darb_Sk1.setText("Darbuotojų skaičius - "+Darb_Sk);
-        Aukstai1.setText("Aukstai - "+Aukstai);
+        pava.setText("Darbovietės pavadinimas - "+Pavadinimas);
+        Adresas1.setText("Darbovietės adresas - "+Adresas);
+        Cecho_vad1.setText("Priskirtas cecho vadovas - "+Cecho_vad);
+        Darb_Sk1.setText("Užregistruotų darbuotojų skaičius - "+Darb_Sk);
+        Aukstai1.setText("Pastato aukštų skaičius - "+Aukstai);
     }
 }

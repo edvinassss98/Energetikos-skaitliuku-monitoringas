@@ -45,11 +45,6 @@ public class WarningsFragment extends Fragment {
             public void onDataChange(final DataSnapshot dataSnapshot) {
 
                 layout.removeAllViews();
-                layout.addView(text);
-                text.setText("Įspėjimų sąrašas");
-                text.setTextSize(28);
-                text.setTypeface(Typeface.DEFAULT_BOLD);
-
                 if (getActivity() != null) {
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         final String myValues = snapshot.getKey();
@@ -65,7 +60,7 @@ public class WarningsFragment extends Fragment {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                                 builder.create();
                                 builder.setTitle(myValues);
-                                builder.setMessage("Įspėjimas:\n" + data)
+                                builder.setMessage("Įspėjimas: " + data)
                                         .setPositiveButton("Ištrinti", new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {

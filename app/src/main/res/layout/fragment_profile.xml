@@ -9,31 +9,38 @@
 
     <RelativeLayout
         android:id="@+id/RelativeLayout01"
-        android:layout_width="345dp"
+        android:layout_width="308dp"
         android:layout_height="614dp"
-        android:layout_marginTop="60dp"
-        android:padding="10dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="136dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginBottom="96dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
-        tools:layout_editor_absoluteX="31dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/darte2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginLeft="0dp"
-            android:layout_marginBottom="570dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="-2dp"
+            android:layout_marginBottom="598dp"
             android:layout_toRightOf="@id/mytextview1"
             android:gravity="left"
-            android:text="Darbuotojas - " />
+            android:text="Vardas Pavardė - "
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <TextView
             android:id="@+id/mytextview1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="12dp" />
+            android:layout_alignParentLeft="true" />
 
         <TextView
             android:id="@+id/pareig"
@@ -41,21 +48,23 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginLeft="0dp"
-            android:layout_marginBottom="445dp"
+            android:layout_marginBottom="494dp"
             android:layout_toRightOf="@id/mytextview1"
             android:gravity="left"
-            android:text="Pareigos - " />
+            android:text="Užimamamo pareigos - "
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <TextView
             android:id="@+id/dirbn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginLeft="0dp"
-            android:layout_marginBottom="383dp"
+            android:layout_marginLeft="-1dp"
+            android:layout_marginBottom="444dp"
             android:layout_toRightOf="@id/mytextview1"
             android:gravity="left"
-            android:text="Dirba nuo - " />
+            android:text="Darbuotojas dirba nuo - "
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <TextView
             android:id="@+id/textid"
@@ -63,61 +72,62 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginLeft="0dp"
-            android:layout_marginBottom="509dp"
+            android:layout_marginBottom="542dp"
             android:layout_toRightOf="@id/mytextview1"
             android:gravity="left"
-            android:text="ID -" />
+            android:text="Darbuotojo ID -"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <TextView
             android:id="@+id/emailid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginLeft="0dp"
-            android:layout_marginBottom="321dp"
+            android:layout_marginLeft="-1dp"
+            android:layout_marginBottom="395dp"
             android:layout_toRightOf="@id/mytextview1"
             android:gravity="left"
-            android:text="Email - " />
-
-        <TextView
-            android:id="@+id/warnings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="0dp"
-            android:layout_marginBottom="266dp"
-            android:layout_toRightOf="@id/mytextview1"
-            android:gravity="left"
-            android:text="Pažeidimai - " />
+            android:text="El. paštas - "
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     </RelativeLayout>
 
     <Button
         android:id="@+id/chngbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="500dp"
-        android:layout_marginEnd="209dp"
-        android:layout_marginBottom="30dp"
+        style="@android:style/Widget.DeviceDefault.Button.Colored"
+        android:layout_width="145dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:text="Pakeisti slaptažodį"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.372"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.616" />
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="152dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="138dp"
-        android:text="Profilio informacija"
+        android:layout_width="308dp"
+        android:layout_height="107dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif"
+        android:text="Informacija apie darbuotoją"
+        android:textAlignment="textStart"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.179"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.078" />/>
 
 </android.support.constraint.ConstraintLayout>

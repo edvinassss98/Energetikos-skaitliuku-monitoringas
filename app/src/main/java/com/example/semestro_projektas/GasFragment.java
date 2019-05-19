@@ -75,8 +75,8 @@ public class GasFragment extends Fragment {
                 builder.create();
                 builder.setTitle("Informacija apie dujų skaitliuką");
                 builder.setMessage("ID: "+id+"\n"+"Tipas: " + tipas+"\n"+"Būsena: "+Busena+
-                        "\nSąnaudos einamąjį mėnėsį : " + sanaudosG+
-                        "\nDabartinis slėgis  : " + geguzesS)
+                        "\nSąnaudos einamajį mėnesį: " + sanaudosG+
+                        "\nDabartinis slėgis: " + geguzesS)
                         .setPositiveButton("Daugiau informacijos", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -89,7 +89,7 @@ public class GasFragment extends Fragment {
                                 intent.putExtra("vasaris", sanaudosV);
                                 startActivity(intent);
                             }
-                        }).setNegativeButton("Uždaryti", new DialogInterface.OnClickListener() {
+                        }).setNegativeButton("Atšaukti", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                     }

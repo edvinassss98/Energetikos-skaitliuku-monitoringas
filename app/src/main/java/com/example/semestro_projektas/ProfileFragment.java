@@ -79,7 +79,6 @@ public class ProfileFragment extends Fragment {
         TextView type = (TextView)getView().findViewById(R.id.pareig);
         TextView worksSince = (TextView)getView().findViewById(R.id.dirbn);
         TextView id = (TextView)getView().findViewById(R.id.textid);
-        TextView Warnings = (TextView)getView().findViewById(R.id.warnings);
         TextView email = (TextView)getView().findViewById(R.id.emailid);
         TextView name = (TextView)getView().findViewById(R.id.darte2);
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -96,11 +95,10 @@ public class ProfileFragment extends Fragment {
         } else if (tipas.contains("3")) {
             tipas = "Inžinierius";
         }
-        type.setText("Pareigos - "+tipas);
-        worksSince.setText("Dirba nuo - - "+dirban);
-        id.setText("Vartotojo ID  - "+a);
-        email.setText("Email - "+currentFirebaseUser.getEmail());
-        name.setText("Vardas  - "+vardas);
-        Warnings.setText("Įspėjimai - "+warnin);
+        type.setText("Užimamos pareigos - "+tipas);
+        worksSince.setText("Darbuotojas dirba nuo - "+dirban);
+        id.setText("Darbuotojo ID  - "+a);
+        email.setText("El. paštas - "+currentFirebaseUser.getEmail());
+        name.setText("Vardas Pavardė - "+vardas);
     }
 }

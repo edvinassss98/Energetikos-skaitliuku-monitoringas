@@ -111,7 +111,7 @@ public class ChangingPassword extends AppCompatActivity {
                         }
                     });
                 } else
-                    Toast.makeText(ChangingPassword.this, "Įveskite visus laukus/arba slaptažodžiai nesutinka", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ChangingPassword.this, "Įveskite visus laukus arba slaptažodžiai nesutinka", Toast.LENGTH_SHORT).show();
             }
 
             @Override

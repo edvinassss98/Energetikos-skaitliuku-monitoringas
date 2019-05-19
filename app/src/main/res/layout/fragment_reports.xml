@@ -4,9 +4,13 @@
     android:layout_height="match_parent">
 
     <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/bargraph"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:id="@+id/bargraph"></com.github.mikephil.charting.charts.BarChart>
+        android:layout_height="473dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="373dp"></com.github.mikephil.charting.charts.BarChart>
 
 
 
